@@ -98,9 +98,11 @@ export class App extends React.Component {
         <div className="vending-machine">
           <div className="soda-selection">
             {virtualSodas.map((soda) => (
-              <div className={`soda ${soda.name === selectedSoda?.name ? "selected" : ""}`} key={soda.name} onClick={() => this.handleSodaSelection(soda)}>
+              <div className={`soda ${soda.name.split(' ').join('')} ${soda.name === selectedSoda?.name ? "selected" : ""}`} key={soda.name} onClick={() => this.handleSodaSelection(soda)}>
                 <h3>{soda.name}</h3>
-                <p>${soda.cost}</p>
+                <div className="price-container">
+                  <p>${soda.cost}</p>
+                </div>
               </div>
             ))}
           </div>

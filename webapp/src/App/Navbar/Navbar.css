@@ -1,7 +1,7 @@
 .navbar-style {
     position: fixed;
     top: 0;
-    background-color: burlywood;
+    background-color: rgb(88, 5, 78);
     height: 56px;
     z-index: 5050;
     left: 0;
@@ -15,10 +15,26 @@
     padding: 17px;
     margin: auto;
     margin-left: 20px !important;
-    font-weight: lighter;
-    font-family: 'Product Sans',Arial,sans-serif;
-    font-size: 20px;
+    font-weight: bold;
+    font-family: cursive;    
+    font-size: 24px;
+    color: white;
     line-height: 22px;
-    max-width: 60px;
+    max-width: 1000px;
     margin-right: 0px !important;
 }
+
+.sub-title {
+    position: relative;
+    padding: 17px;
+    margin: auto;
+    margin-left: 20px !important;
+    font-weight: bold;
+    font-family: cursive;    
+    font-size: 24px;
+    color: white;
+    line-height: 22px;
+    max-width: 1000px;
+    margin-right: 0px !important;
+}
+

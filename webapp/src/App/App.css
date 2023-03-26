@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -35,16 +35,15 @@ h1 {
   gap: 20px;
 }
 
+/* Soda BG Images */
 .soda {
   position: relative;
   width: 200px;
-  height: 250px;
-  background-color: #fafbfa;
-  background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/DALL·E 2023-03-25 02.19.16 - An image of a soda can and label it as _Pop_.png');
-  background-size: 70%;
+  height: 280px;
+  background-color: white;
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  border: 10px solid transparent;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -52,9 +51,27 @@ h1 {
   cursor: pointer;
 }
 
-.soda-img {
-  width: 150px;
-  height: 150px;
+.Fizz {
+  border: 2px solid rgb(70, 70, 70, 0.4);
+  background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/fizz.jpeg');
+} 
+
+.Pop {
+  border: 2px solid rgb(230, 103, 19, 0.4);
+  background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/pop.jpeg');
+  background-position: -3px !important;
+}
+
+.Cola {
+  border: 2px solid rgb(0, 170, 37, 0.4);
+  background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/cola.jpeg');
+  background-size: 92% !important;
+} 
+.MegaPop {
+  border: 2px solid rgb(0, 123, 255, 0.4);
+  background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/megapop.jpeg');
+  background-size: 106% !important;
+  background-position: -5px !important;
 }
 
 .soda:hover {
@@ -66,40 +83,141 @@ h1 {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.soda h3 {
+/* Soda Name */
+.soda.Fizz h3 {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 17px;
+  left: 75px;
   margin: 0;
-  font-size: 24px;
-  font-weight: bold;
-  color: black;
+  font-family:monospace;
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(70, 70, 70);
+}
+
+.soda.MegaPop h3 {
+  position: absolute;
+  top: 17px;
+  left: 50px;
+  margin: 0;
+  font-family: fantasy !important;
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(0, 123, 255);
+}
+.soda.Pop h3 {
+  position: absolute;
+  top: 17px;
+  left: 82px;
+  margin: 0;
+  font-family: fantasy !important;
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(230, 103, 19);
+}
+
+.soda.Cola h3 {
+  position: absolute;
+  top: 16px;
+  left: 78px;
+  margin: 0;
+  font-family: cursive;
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(0, 170, 37);
+}
+
+
+/* Soda Price Containers */
+
+.price-container {
+  position: absolute;
+  bottom: 15px;
+  left: 70px;
+  width:65px;
+  height: 32px;
+  border-radius: 20px;
 }
 
 .soda p {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
   margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-  color: black;
+  left: 24px;
+  top: 6px;
+  font-family: Haettenschweiler, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
 }
 
+.Fizz .price-container {
+  background-color: rgb(70, 70, 70);
+}
+
+.Pop .price-container {
+  background-color: rgb(230, 103, 19);
+}
+
+.Cola .price-container {
+  background-color: rgb(0, 170, 37);
+}
+
+.MegaPop .price-container {
+  background-color: rgb(0, 123, 255);
+}
+
+
+/* Other Soda Classes */
 .soda p:last-child {
   margin-bottom: 0;
 }
 
 
-.soda:before {
+.soda.Pop:before {
   content: "";
   position: absolute;
   top: -10px;
   left: -10px;
   width: calc(100% + 20px);
   height: calc(100% + 20px);
-  background: linear-gradient(to bottom, #f9c942, #f27121);
-  opacity: 0.6;
+  background: linear-gradient(to bottom, #fde8abab, #f27121a2);
+  opacity: 0.25;
+  z-index: -1;
+}
+
+.soda.Cola:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: linear-gradient(to bottom, #cafec697, #a2f221a1);
+  opacity: 0.25;
+  z-index: -1;
+}
+
+.soda.MegaPop:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: linear-gradient(to bottom, #a4edffa7, #21cff2b2);
+  opacity: 0.25;
+  z-index: -1;
+}
+
+.soda.Fizz:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: linear-gradient(to bottom, #d2d2d294, #57575797);
+  opacity: 0.3;
   z-index: -1;
 }
 
