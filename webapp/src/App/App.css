@@ -1,38 +1,167 @@
-.App {
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  padding: 100px 25px 25px 0px;
+}
+
+body {
+  background-color: #f2f2f2;
+  height: 80%
+}
+
+h1 {
   text-align: center;
+  margin-top: 50px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.vending-machine {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Soda selection */
+.soda-selection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.soda {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  background-color: #fafbfa;
+  background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/DALL·E 2023-03-25 02.19.16 - An image of a soda can and label it as _Pop_.png');
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 10px solid transparent;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-out;
+  cursor: pointer;
+}
+
+.soda-img {
+  width: 150px;
+  height: 150px;
+}
+
+.soda:hover {
+  transform: translateY(-10px);
+}
+
+.soda.selected {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.soda h3 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+.soda p {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.soda p:last-child {
+  margin-bottom: 0;
+}
+
+
+.soda:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: linear-gradient(to bottom, #f9c942, #f27121);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.soda:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  z-index: -1;
+}
+/* Money insertion */
+.money-insertion {
+  margin-top: 50px;
+}
+
+.money-insertion p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.money-insertion button {
+  font-size: 16px;
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ddd;
+  transition: all 0.2s ease-in-out;
+}
+
+.money-insertion button:hover {
+  background-color: #ccc;
+}
+
+.money-insertion button:active {
+  transform: scale(0.95);
+}
+
+/* Purchase button */
+.purchase-button {
+  margin-top: 50px;
+}
+
+.purchase-button button {
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.purchase-button button:hover {
+  background-color: #3e8e41;
+}
+
+.purchase-button button:active {
+  transform: scale(0.95);
 }
