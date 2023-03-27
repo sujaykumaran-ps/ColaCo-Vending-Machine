@@ -8,31 +8,7 @@ export class App extends React.Component {
     this.state = {
       selectedSoda: null,
       remainingMoney: 0,
-      virtualSodas: [{
-        name: 'Fizz',
-        description: 'An effervescent fruity experience with hints of grape and coriander',
-        cost: 1,
-        maxQuantity: 100
-      },
-      {
-        name: 'Pop',
-        description: 'An explosion of flavor that will knock your socks off!',
-        cost: 1,
-        maxQuantity: 100
-      },
-      {
-        name: 'Cola',
-        description: 'A basic no nonsense cola that is the perfect pick me up for any occasion.',
-        cost: 1,
-        maxQuantity: 200
-      },
-      {
-        name: 'Mega Pop',
-        description: 'Not for the faint of heart. So flavorful and so invigorating, it should probably be illegal.',
-        cost: 1,
-        maxQuantity: 50
-      }
-      ]
+      virtualSodas: [],
     };
   }
 
@@ -53,15 +29,17 @@ export class App extends React.Component {
   handlePurchase = () => {
     const {
       selectedSoda,
-      remainingMoney,
-      virtualSodas
+      remainingMoney
     } = this.state;
     // check if a soda is selected and enough money is inserted
     if (selectedSoda && remainingMoney >= selectedSoda.cost) {
       // generate JSON soda file and download it
+      const amtReturned = remainingMoney - selectedSoda.cost;
       const sodaFile = JSON.stringify(selectedSoda);
+      const { name, description, cost } = JSON.parse(sodaFile);
+      const returnSoda = JSON.stringify({ name, description, cost});
       const element = document.createElement('a');
-      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(sodaFile));
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(returnSoda));
       element.setAttribute('download', `${selectedSoda.name}.json`);
       element.style.display = 'none';
       document.body.appendChild(element);
@@ -72,7 +50,7 @@ export class App extends React.Component {
         remainingMoney: prevState.remainingMoney - selectedSoda.cost,
         virtualSodas: prevState.virtualSodas.map(soda => {
           if (soda.name === selectedSoda.name) {
-            soda.maxQuantity -= 1;
+            soda.currQuantity -= 1;
           }
           return soda;
         })
@@ -84,6 +62,18 @@ export class App extends React.Component {
       });
     }
   };
+
+//Getting the data from Server
+componentDidMount() {
+  const toJson = (response) => response.json();
+  const loadData = (config) => {
+    fetch(config.soda_api_url)
+      .then(toJson)
+      .then((virtualSodas) => this.setState({ virtualSodas }));
+  };
+
+  fetch("config.json").then(toJson).then(loadData);
+}
 
   render() {
     const {
