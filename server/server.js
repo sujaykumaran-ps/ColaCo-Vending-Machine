@@ -5,5 +5,5 @@ const port = 3001;
 
 // Listening to port 3001
 app.listen(port, () => {
-    console.log(`To-Do app listening at http://localhost:${port}`)
+    console.log(`Soda app listening at http://localhost:${port}`)
 });
