@@ -97,20 +97,15 @@ componentDidMount() {
             ))}
           </div>
           <div className="money-insertion">
-            <p>Insert money:</p>
+            <p>$ Insert Money $</p>
             <button onClick={() => this.handleMoneyInsertion(1)}>$1</button>
             <button onClick={() => this.handleMoneyInsertion(5)}>$5</button>
             <button onClick={() => this.handleMoneyInsertion(10)}>$10</button>
             <button onClick={() => this.handleMoneyInsertion(20)}>$20</button>
           </div>
           <div className="purchase-button">
-            <button
-              disabled={!selectedSoda || remainingMoney < selectedSoda.cost}
-              onClick={this.handlePurchase}
-            >
-              Purchase
-            </button>
-            <p>Remaining money: {remainingMoney}</p>
+            <button disabled={!selectedSoda || remainingMoney < selectedSoda.cost} onClick={this.handlePurchase}>Purchase</button>
+            <p>Remaining money: ${remainingMoney}</p>
           </div>
         </div>
       </div>

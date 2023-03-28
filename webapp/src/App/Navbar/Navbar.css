@@ -24,17 +24,27 @@
     margin-right: 0px !important;
 }
 
-.sub-title {
-    position: relative;
-    padding: 17px;
-    margin: auto;
-    margin-left: 20px !important;
-    font-weight: bold;
-    font-family: cursive;    
-    font-size: 24px;
+.app-btn {
+    text-decoration: none;
     color: white;
-    line-height: 22px;
-    max-width: 1000px;
-    margin-right: 0px !important;
+    font-family: cursive;
 }
 
+
+
+.restock-btn {
+    position: absolute;
+    left: 1200px;
+    bottom: 8px;
+    background-color: #4CAF50;
+    width: 150px;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    float: right; 
+
+}
