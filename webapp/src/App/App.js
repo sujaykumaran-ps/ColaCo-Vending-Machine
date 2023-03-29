@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { Navbar } from './Navbar/Navbar';
 
 export class App extends React.Component {
   constructor(props) {
@@ -84,12 +83,14 @@ componentDidMount() {
 
     return (
       <div className="app-container">
-        <Navbar />
         <div className="vending-machine">
           <div className="soda-selection">
             {virtualSodas.map((soda) => (
               <div className={`soda ${soda.name.split(' ').join('')} ${soda.name === selectedSoda?.name ? "selected" : ""}`} key={soda.name} onClick={() => this.handleSodaSelection(soda)}>
                 <h3>{soda.name}</h3>
+                <div className="quantity-container">
+                  <p>{soda.currQuantity} left</p>
+                </div>
                 <div className="price-container">
                   <p>${soda.cost}</p>
                 </div>

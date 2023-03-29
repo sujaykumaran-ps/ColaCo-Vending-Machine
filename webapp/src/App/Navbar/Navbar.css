@@ -1,12 +1,12 @@
 .navbar-style {
     position: fixed;
     top: 0;
-    background-color: rgb(88, 5, 78);
+    background-color: rgb(17, 17, 17);
     height: 56px;
     z-index: 5050;
     left: 0;
     width: 100%;
-    box-shadow: 0 6px 4px -6px #777;
+    box-shadow: 0 6px 4px -6px #191919;
 } 
 
 
@@ -18,7 +18,6 @@
     font-weight: bold;
     font-family: cursive;    
     font-size: 24px;
-    color: white;
     line-height: 22px;
     max-width: 1000px;
     margin-right: 0px !important;
@@ -26,7 +25,7 @@
 
 .app-btn {
     text-decoration: none;
-    color: white;
+    color: rgb(235, 235, 235);
     font-family: cursive;
 }
 
