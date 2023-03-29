@@ -7,13 +7,12 @@
 
 .app-container {
   padding: 40px 25px 25px 0px;
-  
 }
 
 body {
   background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/bg.gif');
   background-size: 100%;
-  height: 80%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +26,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(53, 53, 53, 0.879);
+  background-color: rgba(53, 53, 53, 0.8);
 }
 
 h1 {
@@ -116,10 +115,10 @@ h1 {
 .soda.MegaPop h3 {
   position: absolute;
   top: 26px;
-  left: 70px;
+  left: 72px;
   margin: 0;
   font-family: fantasy !important;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   color: rgb(0, 123, 255);
 }
@@ -151,8 +150,8 @@ h1 {
 .quantity-container {
   float: right;
   position: relative;
-  top: 4px;
-  right: 4px;
+  top: 6px;
+  right: 6px;
   width:68px;
   height: 28px;
   border-radius: 30px;
@@ -287,68 +286,163 @@ h1 {
 }
 /* Money insertion */
 .money-insertion {
-  background-color: #323232;
-  padding: 20px 35px;
+  background-color: #f7f7f7;
+  padding: 10px 35px;
   width: 860px;
-  margin-top: 35px;
+  margin-top: 15px;
   border-radius: 15px;
-  border: solid#b7b7b7;
+  border: solid #7ee696;
   text-align: center;
   z-index: 1;
 }
 
 .money-insertion p {
-  font-size: 18px;
+  font-size: 16px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
-  margin-bottom: 20px;
-  color: white;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: rgb(44, 44, 44);
 }
 
 .money-insertion button {
   font-family: Haettenschweiler, sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
-  padding: 14px;
+  padding: 10px;
   margin: 0px 25px;
   width: 120px;
-  margin-right: 10px;
+  height: 45px;
   border: none;
-  border-radius: 5px;
+  border-radius: 1px;
+  color: white;
   cursor: pointer;
-  background-color: #ddd;
+  background-color: #85bb65;
   transition: all 0.2s ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .money-insertion button:hover {
-  background-color: #ccc;
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
 }
 
 .money-insertion button:active {
   transform: scale(0.95);
 }
 
+
 /* Purchase button */
 .purchase-button {
-  margin-top: 50px;
+  margin-top: 20px;
   z-index: 1;
 }
 
-.purchase-button button {
-  font-size: 20px;
-  padding: 10px 20px;
+.purchase-btn {
+  position: relative;
   border: none;
-  border-radius: 5px;
+  background: transparent;
+  padding: 0;
   cursor: pointer;
-  background-color: #4CAF50;
-  color: #fff;
-  transition: all 0.2s ease-in-out;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-.purchase-button button:hover {
-  background-color: #3e8e41;
+.purchase-btn-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
 }
 
-.purchase-button button:active {
-  transform: scale(0.95);
+.purchase-btn-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(340deg 100% 16%) 0%,
+    hsl(340deg 100% 32%) 8%,
+    hsl(340deg 100% 32%) 92%,
+    hsl(340deg 100% 16%) 100%
+  );
+}
+
+.purchase-btn-front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: hsl(345deg 100% 47%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
+  .purchase-btn-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
+}
+
+.purchase-btn:not([disabled]):hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.purchase-btn:not([disabled]):hover .purchase-btn-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.purchase-btn:not([disabled]):active .purchase-btn-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.purchase-btn:not([disabled]):hover .purchase-btn-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.purchase-btn:not([disabled]):active .purchase-btn-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.purchase-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.purchase-btn:disabled {
+  opacity: 0.7; 
+  cursor: not-allowed; 
+  pointer-events: none; 
 }

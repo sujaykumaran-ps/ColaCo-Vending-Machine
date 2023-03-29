@@ -14,7 +14,15 @@ export class Navbar extends React.Component {
             <div className="navbar-style">
                 <h2 className="title"> 
                     <Link to="/" className="app-btn">ColaCo</Link>
-                    <Link to="/admin" className="restock-btn">Re-Stock</Link>
+                    <Link to="/admin">
+                    <button className="restock-btn" type="button">
+                        <span className="restock-btn-shadow"></span>
+                        <span className="restock-btn-edge"></span>
+                        <span className="restock-btn-front text">
+                        Re-Stock
+                        </span>
+                    </button>
+                    </Link>
                 </h2>  
             </div>
             <Routes>

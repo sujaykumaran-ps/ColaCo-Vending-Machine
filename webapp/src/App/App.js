@@ -26,10 +26,8 @@ export class App extends React.Component {
 
   // function to handle purchase
   handlePurchase = () => {
-    const {
-      selectedSoda,
-      remainingMoney
-    } = this.state;
+    const { selectedSoda, remainingMoney, virtualSodas } = this.state;
+  
     // check if a soda is selected and enough money is inserted
     if (selectedSoda && remainingMoney >= selectedSoda.cost) {
       // generate JSON soda file and download it
@@ -44,19 +42,46 @@ export class App extends React.Component {
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
-
-      this.setState(prevState => ({
-        remainingMoney: prevState.remainingMoney - selectedSoda.cost,
-        virtualSodas: prevState.virtualSodas.map(soda => {
-          if (soda.name === selectedSoda.name) {
-            soda.currQuantity -= 1;
-          }
-          return soda;
-        })
-      }));
-
-      // clear selection
+  
+      // update virtualSodas array to decrease currQuantity of selected soda by 1
+      const updatedVirtualSodas = virtualSodas.map(soda => {
+        if (soda.name === selectedSoda.name) {
+          soda.currQuantity -= 1;
+          // make a PUT request to update the currQuantity field in the database
+          fetch(`http://localhost:3001/sodas/${soda.id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              currQuantity: soda.currQuantity
+            })
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Failed to update soda quantity');
+              }
+              return response.json();
+            })
+            .then(updatedSoda => {
+              // update the virtualSodas array with the updated soda
+              return {
+                ...soda,
+                currQuantity: updatedSoda.currQuantity
+              };
+              
+            })
+            .catch(error => {
+              console.error(error);
+              return soda;
+            });
+        }
+        return soda;
+      });
+      // update the state with the updated virtualSodas array and remainingMoney
       this.setState({
+        remainingMoney: amtReturned,
+        virtualSodas: updatedVirtualSodas,
         selectedSoda: null
       });
     }
@@ -73,6 +98,8 @@ componentDidMount() {
 
   fetch("config.json").then(toJson).then(loadData);
 }
+
+
 
   render() {
     const {
@@ -98,15 +125,21 @@ componentDidMount() {
             ))}
           </div>
           <div className="money-insertion">
-            <p>$ Insert Money $</p>
+            <p>$ Insert Bills $</p>
             <button onClick={() => this.handleMoneyInsertion(1)}>$1</button>
             <button onClick={() => this.handleMoneyInsertion(5)}>$5</button>
             <button onClick={() => this.handleMoneyInsertion(10)}>$10</button>
             <button onClick={() => this.handleMoneyInsertion(20)}>$20</button>
+            <p>Remaining: ${remainingMoney}</p>
           </div>
           <div className="purchase-button">
-            <button disabled={!selectedSoda || remainingMoney < selectedSoda.cost} onClick={this.handlePurchase}>Purchase</button>
-            <p>Remaining money: ${remainingMoney}</p>
+          <button className="purchase-btn" type="button" disabled={!selectedSoda || remainingMoney < selectedSoda.cost} onClick={this.handlePurchase}>
+            <span className="purchase-btn-shadow"></span>
+            <span className="purchase-btn-edge"></span>
+            <span className="purchase-btn-front text">
+            Purchase
+            </span>
+          </button>
           </div>
         </div>
       </div>

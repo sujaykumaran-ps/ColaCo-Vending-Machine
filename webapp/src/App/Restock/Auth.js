@@ -18,8 +18,7 @@ export class Auth extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
-    if (this.state.password === 'admin') {
+    if (this.state.password === '12345') {
       this.setState({ isLoggedIn: true });
     }
   };
@@ -33,7 +32,7 @@ export class Auth extends React.Component {
       <div className="form-div">
         <form className="form-style" onSubmit={this.handleSubmit}>
           <label>
-            Enter Access Code
+            Enter the 5 Digit Access Code
             <input
               type="password"
               value={this.state.password}
