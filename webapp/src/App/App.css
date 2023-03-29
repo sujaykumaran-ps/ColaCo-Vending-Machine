@@ -20,7 +20,7 @@ body {
 
 body::before {
   content: "";
-  display: block;
+  display: flex;
   position: absolute;
   top: 0;
   left: 0;
@@ -286,7 +286,7 @@ h1 {
 }
 /* Money insertion */
 .money-insertion {
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   padding: 10px 35px;
   width: 860px;
   margin-top: 15px;
@@ -317,14 +317,14 @@ h1 {
   border-radius: 1px;
   color: white;
   cursor: pointer;
-  background-color: #85bb65;
+  background-color: #82bd60;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .money-insertion button:hover {
-  filter: brightness(110%);
-  -webkit-filter: brightness(110%);
+  filter: brightness(120%);
+  -webkit-filter: brightness(120%);
 }
 
 .money-insertion button:active {

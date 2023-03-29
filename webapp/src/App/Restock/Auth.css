@@ -57,3 +57,11 @@
 .form-style button[type="submit"]:hover {
     background-color: #3e8e41;
 }
+
+.error-message {
+  position: absolute;
+  width: 400px;
+  bottom: 30px;
+  left:55px;
+  color: red;
+}

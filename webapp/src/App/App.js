@@ -96,7 +96,7 @@ export class App extends React.Component {
   
     // Download remainingMoney as a JSON file
     const element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(remainingMoneyJSON));
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(`$${remainingMoneyJSON}`));
     element.setAttribute('download', 'remaining-money.txt');
     element.style.display = 'none';
     document.body.appendChild(element);

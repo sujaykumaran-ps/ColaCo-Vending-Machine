@@ -1,5 +1,6 @@
 import React from 'react';
 import './Restock.css';
+import { Navigate } from 'react-router-dom';
 
 export class Restock extends React.Component {
   constructor(props) {
@@ -29,9 +30,15 @@ componentDidMount() {
     render() {
       const {
         selectedSoda,
-        virtualSodas
+        virtualSodas,
+        isLoggedIn
       } = this.state;
-  
+      console.log('isLoggedIn', this.props.isLoggedIn);
+      const defaultQuantity = selectedSoda ? selectedSoda.currQuantity : '';
+      const defaultCost = selectedSoda ? selectedSoda.cost : '';
+    //   if (!isLoggedIn) {
+    //     return <Navigate to="/admin" />;
+    //   }
       return (
         <div className="app-container">
           <div className="vending-machine">
@@ -48,6 +55,27 @@ componentDidMount() {
                 </div>
               ))}
             </div>
+            <div className="money-insertion">
+            <p>Update Sodas</p>
+
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="100" defaultValue={defaultQuantity}></input>
+            <label for="cost">Cost</label>
+            <input type="number" id="cost" name="cost" defaultValue={defaultCost}></input>
+
+          </div>
+          <div className="purchase-button">
+          <button className="purchase-btn" type="button" disabled={!selectedSoda} onClick={this.handlePurchase}>
+            <span className="purchase-btn-shadow"></span>
+            <span className="purchase-btn-edge"></span>
+            <span className="purchase-btn-front text">Buy Soda</span>
+          </button>
+          <button className="change-btn" type="button" disabled={selectedSoda} onClick={this.handleRemainingMoney}>
+            <span className="change-btn-shadow"></span>
+            <span className="change-btn-edge"></span>
+            <span className="change-btn-front text">Done</span>
+          </button>
+          </div>
 
           </div>
         </div>
