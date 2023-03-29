@@ -87,6 +87,24 @@ export class App extends React.Component {
     }
   };
 
+  handleRemainingMoney = () => {
+    const { remainingMoney } = this.state;
+    const remainingMoneyJSON = JSON.stringify(remainingMoney);
+  
+    // Reset remainingMoney to 0
+    this.setState({ remainingMoney: 0 });
+  
+    // Download remainingMoney as a JSON file
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(remainingMoneyJSON));
+    element.setAttribute('download', 'remaining-money.txt');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
+
 //Getting the data from Server
 componentDidMount() {
   const toJson = (response) => response.json();
@@ -136,9 +154,12 @@ componentDidMount() {
           <button className="purchase-btn" type="button" disabled={!selectedSoda || remainingMoney < selectedSoda.cost} onClick={this.handlePurchase}>
             <span className="purchase-btn-shadow"></span>
             <span className="purchase-btn-edge"></span>
-            <span className="purchase-btn-front text">
-            Purchase
-            </span>
+            <span className="purchase-btn-front text">Buy Soda</span>
+          </button>
+          <button className="change-btn" type="button" disabled={remainingMoney === 0} onClick={this.handleRemainingMoney}>
+            <span className="change-btn-shadow"></span>
+            <span className="change-btn-edge"></span>
+            <span className="change-btn-front text">End Transaction</span>
           </button>
           </div>
         </div>
