@@ -9,7 +9,7 @@ import { Restock } from '../Restock/Restock';
 export class Navbar extends React.Component {
     render(){
         return (
-        // Navbar Div with Title
+        // Navbar Div with Title and Restock Button
         <Router>
             <div className="navbar-style">
                 <h2 className="title"> 
@@ -25,6 +25,7 @@ export class Navbar extends React.Component {
                     </Link>
                 </h2>  
             </div>
+            {/* Routes for different pages */}
             <Routes>
                 <Route exact path="" element={<App/>} />
                 <Route path="/admin" element={<Auth />} />

@@ -58,10 +58,20 @@
     background-color: #3e8e41;
 }
 
+.submit-btn {
+    background-color: hsl(345deg 100% 47%) !important;
+    padding: 15px !important;
+}
+
+.submit-btn:hover {
+    filter: brightness(110%);
+    -webkit-filter: brightness(110%);
+}
+
 .error-message {
-  position: absolute;
-  width: 400px;
-  bottom: 30px;
-  left:55px;
-  color: red;
+    position: absolute;
+    width: 400px;
+    bottom: 30px;
+    left: 55px;
+    color: red;
 }

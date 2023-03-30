@@ -11,6 +11,7 @@ export class App extends React.Component {
     };
   }
 
+  // function to handle soda selection
   handleSodaSelection = (soda) => {
     this.setState({
       selectedSoda: soda
@@ -27,7 +28,6 @@ export class App extends React.Component {
   // function to handle purchase
   handlePurchase = () => {
     const { selectedSoda, remainingMoney, virtualSodas } = this.state;
-  
     // check if a soda is selected and enough money is inserted
     if (selectedSoda && remainingMoney >= selectedSoda.cost) {
       // generate JSON soda file and download it
@@ -47,6 +47,7 @@ export class App extends React.Component {
       const updatedVirtualSodas = virtualSodas.map(soda => {
         if (soda.name === selectedSoda.name) {
           soda.currQuantity -= 1;
+
           // make a PUT request to update the currQuantity field in the database
           fetch(`http://localhost:3001/sodas/${soda.id}`, {
             method: 'PUT',
@@ -78,6 +79,7 @@ export class App extends React.Component {
         }
         return soda;
       });
+
       // update the state with the updated virtualSodas array and remainingMoney
       this.setState({
         remainingMoney: amtReturned,
@@ -103,19 +105,18 @@ export class App extends React.Component {
     element.click();
     document.body.removeChild(element);
   }
+  
+  //Getting the data from Server
+  componentDidMount() {
+    const toJson = (response) => response.json();
+    const loadData = (config) => {
+      fetch(config.soda_api_url)
+        .then(toJson)
+        .then((virtualSodas) => this.setState({ virtualSodas }));
+    };
 
-
-//Getting the data from Server
-componentDidMount() {
-  const toJson = (response) => response.json();
-  const loadData = (config) => {
-    fetch(config.soda_api_url)
-      .then(toJson)
-      .then((virtualSodas) => this.setState({ virtualSodas }));
-  };
-
-  fetch("config.json").then(toJson).then(loadData);
-}
+    fetch("config.json").then(toJson).then(loadData);
+  }
 
 
   render() {

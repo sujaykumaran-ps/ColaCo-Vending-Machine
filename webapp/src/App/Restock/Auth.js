@@ -11,7 +11,8 @@ export class Auth extends React.Component {
       error: ''
     };
   }
-
+  
+  // Function to check the length of access code
   handlePasswordChange = (event) => {
     const password = event.target.value;
     if (/^\d{0,5}$/.test(password)) {
@@ -19,6 +20,7 @@ export class Auth extends React.Component {
     }
   };
 
+  // Submit Handler function to check the access code
   handleSubmit = (event) => {
     event.preventDefault();
     const admin = this.state.admins.find((admin) => admin.access_code === this.state.password);
@@ -63,7 +65,6 @@ export class Auth extends React.Component {
         .then(toJson)
         .then((admins) => this.setState({ admins }));
     };
-  
     fetch("config.json").then(toJson).then(loadData);
   }
 
@@ -71,7 +72,7 @@ export class Auth extends React.Component {
     const {
       admins
     } = this.state;
-
+    // Navigating to /restock page if logged in
     if (admins.length && admins[0].isLoggedIn) {
       return <Navigate to="/restock" />;
     }    
@@ -87,7 +88,7 @@ export class Auth extends React.Component {
               onChange={this.handlePasswordChange}
             />
           </label>
-          <button type="submit">Submit</button>
+          <button className="submit-btn" type="submit">Submit</button>
           {this.state.error && (
             <p className="error-message">{this.state.error}</p>
           )}
