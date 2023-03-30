@@ -40,6 +40,19 @@
 .update-div .Fizz-update button {
     background-color: rgb(70, 70, 70);
 }
+
+.update-div .Pop-update button {
+    background-color: rgb(230, 103, 19);
+}
+
+.update-div .MegaPop-update button {
+    background-color: rgb(0, 123, 255);
+}
+
+.update-div .Cola-update button {
+    background-color: rgb(0, 170, 37);
+}
+
 .update-div button:hover {
     filter: brightness(120%);
     -webkit-filter: brightness(120%);
