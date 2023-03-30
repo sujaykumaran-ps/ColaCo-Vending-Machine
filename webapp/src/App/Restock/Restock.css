@@ -1,0 +1,187 @@
+.update-div {
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px 35px;
+    width: 860px;
+    margin-top: 15px;
+    border-radius: 15px;
+    border: solid hsl(345deg 100% 47%);
+    text-align: center;
+    z-index: 1;
+}
+
+
+.update-div button {
+    font-family: Haettenschweiler, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px;
+    margin: 0px 25px;
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    background-color: hsl(345deg 100% 47%);
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.update-div .Fizz-update button {
+    background-color: rgb(70, 70, 70);
+}
+.update-div button:hover {
+    filter: brightness(120%);
+    -webkit-filter: brightness(120%);
+}
+
+.update-div button:active {
+    transform: scale(0.95);
+}
+
+.qty-div {
+    padding: 10px;
+    position: relative;
+    height: 70px;
+}
+
+.qty-div label, .cost-div label {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: hsl(345deg 100% 47%);
+}
+
+.qty-div.Pop-update label {
+    color: rgb(230, 103, 19);
+}
+
+.qty-div.MegaPop-update label{
+    color: rgb(0, 123, 255);
+}
+
+.qty-div.Fizz-update label{
+    color: rgb(70, 70, 70);
+}
+
+.qty-div.Cola-update label{
+    color: rgb(0, 170, 37);
+}
+
+
+
+input[type=range] {
+    width: 30%;
+    height: 30px;
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    height: 4px;
+    background: #ddd;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: hsl(345deg 100% 47%);
+    border-radius: 50%;
+    margin-top: -8px;
+}
+
+.qty-div.Pop-update input[type=range]::-webkit-slider-thumb {
+    background: rgb(230, 103, 19);
+}
+
+.qty-div.MegaPop-update input[type=range]::-webkit-slider-thumb {
+    background: rgb(0, 123, 255);
+}
+
+.qty-div.Cola-update input[type=range]::-webkit-slider-thumb {
+    background: rgb(0, 170, 37);
+}
+
+.qty-div.Fizz-update input[type=range]::-webkit-slider-thumb {
+    background: rgb(70, 70, 70);
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-moz-range-track {
+    height: 5px;
+    background: #ddd;
+}
+
+input[type=range]::-moz-range-thumb  {
+    width: 20px;
+    height: 20px;
+    background: hsl(345deg 100% 47%);
+    border-radius: 50%;
+}
+
+.qty-div.Pop-update input[type=range]::-moz-range-thumb  {
+    background: rgb(230, 103, 19);
+}
+.qty-div.MegaPop-update input[type=range]::-moz-range-thumb  {
+    background: rgb(0, 123, 255);
+}
+.qty-div.Cola-update input[type=range]::-moz-range-thumb  {
+    background: rgb(0, 170, 37);
+}
+.qty-div.Fizz-update input[type=range]::-moz-range-thumb  {
+    background: rgb(70, 70, 70);
+}
+
+input[type=range]::-ms-track {
+    height: 5px;
+    background: #ddd;
+}
+
+input[type=range]::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: hsl(345deg 100% 47%);
+    border-radius: 50%;
+}
+.qty-div.Pop-update input[type=range]::-ms-thumb {
+    background: rgb(230, 103, 19);
+}
+.qty-div.MegaPop-update input[type=range]::-ms-thumb {
+    background: rgb(0, 123, 255);
+}
+.qty-div.Cola-update input[type=range]::-ms-thumb {
+    background: rgb(0, 170, 37);
+}
+.qty-div.Fizz-update input[type=range]::-ms-thumb {
+    background: rgb(70, 70, 70);
+}
+
+
+.range-value {
+    display: inline-block;
+    margin-left: 10px;
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: hsl(345deg 100% 47%);
+}
+
+.qty-div.Pop-update .range-value {
+    color: rgb(230, 103, 19);
+}
+.qty-div.MegaPop-update .range-value {
+    color: rgb(0, 123, 255);
+}
+.qty-div.Cola-update .range-value {
+    color: rgb(0, 170, 37);
+}
+.qty-div.Fizz-update .range-value {
+    color: rgb(70, 70, 70);
+}

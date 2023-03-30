@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Navigate, Link } from 'react-router-dom';
+import React from 'react';
+import { Navigate } from 'react-router-dom';
 import './Auth.css';
-import { Restock } from './Restock';
 
 export class Auth extends React.Component {
   constructor(props) {
@@ -72,9 +71,11 @@ export class Auth extends React.Component {
     const {
       admins
     } = this.state;
-      if (admins.length && admins[0].isLoggedIn) {
-        return <Navigate to="/restock" />;
-      }    
+
+    if (admins.length && admins[0].isLoggedIn) {
+      return <Navigate to="/restock" />;
+    }    
+
     return (
       <div className="form-div">
         <form className="form-style" onSubmit={this.handleSubmit}>

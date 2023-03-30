@@ -1,3 +1,6 @@
+.hidden {
+  display: none;
+}
 * {
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -292,7 +295,7 @@ h1 {
   width: 860px;
   margin-top: 15px;
   border-radius: 15px;
-  border: solid #7ee696;
+  border: solid #08b02f;
   text-align: center;
   z-index: 1;
 }
@@ -308,12 +311,12 @@ h1 {
 }
 
 .money-insertion #rem-amt {
-  color: rgb(189, 63, 63);
+  color: hsl(345deg 100% 47%);
   padding: 5px;
 }
 
 .money-insertion #bills-title{
-  color: #82bd60;
+  color: #08b02f;
 }
 
 .money-insertion button {
@@ -328,7 +331,7 @@ h1 {
   border-radius: 1px;
   color: white;
   cursor: pointer;
-  background-color: #82bd60;
+  background-color: #08b02f;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }

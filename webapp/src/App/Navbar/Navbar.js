@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navbar.css';
-import { BrowserRouter as Router, Routes, PrivateRoute, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { App } from '../App';
 import { Auth } from '../Restock/Auth';
 import { Restock } from '../Restock/Restock';

@@ -159,11 +159,13 @@ componentDidMount() {
                 </div>
               ))}
             </div>
-            <div className="money-insertion">
-                <p>Update Sodas</p>
-                <label htmlFor="quantity">Quantity to refill</label>
-                <input type="range" id="quantity" name="quantity" min="0" max={defaultQuantity} value={this.state.quantity} onChange={this.handleQuantityChange}></input>
-                <button type="button" onClick={this.handleQuantityUpdate}>Refill Sodas</button>
+            <div className={selectedSoda ? "update-div" : "hidden"}>
+                <div className={`qty-div ${selectedSoda?.name.split(' ').join('')}-update`}>
+                    <label htmlFor="quantity">Quantity to refill</label>
+                    <input type="range" id="quantity" name="quantity" min="0" max={defaultQuantity} value={this.state.quantity} onChange={this.handleQuantityChange}></input>
+                    <span className="range-value">{this.state.quantity}</span>
+                    <button type="button" onClick={this.handleQuantityUpdate}>Refill Sodas</button>
+                </div>
                 <label htmlFor="cost">Cost</label>
                 <input type="number" id="cost" name="cost" defaultValue={defaultCost}></input> 
             </div>
@@ -179,4 +181,3 @@ componentDidMount() {
       );
     }
 }
-  
