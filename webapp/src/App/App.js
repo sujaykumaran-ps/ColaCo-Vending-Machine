@@ -149,7 +149,7 @@ export class App extends React.Component {
             <button onClick={() => this.handleMoneyInsertion(10)}>$10</button>
             <button onClick={() => this.handleMoneyInsertion(20)}>$20</button>
             <div className="rem-div">
-              <p id="rem-amt">Remaining: ${remainingMoney}</p>
+              <p id="rem-amt">Remaining Money: ${remainingMoney}</p>
             </div>
     
           </div>
