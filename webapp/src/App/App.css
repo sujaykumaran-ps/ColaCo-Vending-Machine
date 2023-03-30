@@ -1,6 +1,7 @@
 .hidden {
   display: none;
 }
+
 * {
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -70,12 +71,16 @@ h1 {
   transition: transform 0.3s ease-out;
   cursor: pointer;
   margin-bottom: 20px;
+  border: 2px solid hsla(345, 100%, 47%, 0.694);
+  background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/soda.jpeg');
+  background-size: 92% !important;
 }
+
 
 .Fizz {
   border: 2px solid rgb(70, 70, 70, 0.4);
   background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/fizz.jpeg');
-} 
+}
 
 .Pop {
   border: 2px solid rgb(230, 103, 19, 0.4);
@@ -87,7 +92,8 @@ h1 {
   border: 2px solid rgb(0, 170, 37, 0.4);
   background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/cola.jpeg');
   background-size: 92% !important;
-} 
+}
+
 .MegaPop {
   border: 2px solid rgb(0, 123, 255, 0.4);
   background-image: url('/Users/sujaysankarapandian/Documents/Itential/ColaCo-Vending-Machine/webapp/public/megapop.jpeg');
@@ -105,12 +111,23 @@ h1 {
 }
 
 /* Soda Name */
+
+.soda h3 {
+  position: absolute;
+  top: 26px;
+  left: 95px;
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: hsl(345, 100%, 47%);
+}
 .soda.Fizz h3 {
   position: absolute;
   top: 26px;
   left: 95px;
   margin: 0;
-  font-family:monospace;
+  font-family: monospace;
   font-size: 22px;
   font-weight: 600;
   color: rgb(70, 70, 70);
@@ -126,6 +143,7 @@ h1 {
   font-weight: 600;
   color: rgb(0, 123, 255);
 }
+
 .soda.Pop h3 {
   position: absolute;
   top: 26px;
@@ -156,10 +174,12 @@ h1 {
   position: relative;
   top: 6px;
   right: 6px;
-  width:68px;
+  width: 68px;
   height: 28px;
   border-radius: 30px;
+  background-color: hsl(345, 100%, 47%);
 }
+
 .quantity-container p {
   margin: 0;
   position: relative;
@@ -191,9 +211,10 @@ h1 {
   position: absolute;
   bottom: 15px;
   left: 90px;
-  width:65px;
+  width: 65px;
   height: 32px;
   border-radius: 20px;
+  background-color: hsl(345, 100%, 47%);
 }
 
 .price-container p {
@@ -229,6 +250,17 @@ h1 {
   margin-bottom: 0;
 }
 
+.soda::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: linear-gradient(to bottom, #fdababab, #f22121a2);
+  opacity: 0.25;
+  z-index: -1;
+}
 
 .soda.Pop:before {
   content: "";
@@ -288,6 +320,7 @@ h1 {
   height: 80%;
   z-index: -1;
 }
+
 /* Money insertion */
 .money-insertion {
   background-color: #ffffff;
@@ -303,7 +336,7 @@ h1 {
 
 .money-insertion p {
   font-size: 16px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -314,7 +347,7 @@ h1 {
   padding: 5px;
 }
 
-.money-insertion #bills-title{
+.money-insertion #bills-title {
   color: #08b02f;
   padding: 5px;
 }
@@ -377,9 +410,7 @@ h1 {
   will-change: transform;
   transform: translateY(2px);
   transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
 .purchase-btn-edge {
@@ -389,13 +420,11 @@ h1 {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  background: linear-gradient(
-    to left,
-    hsl(340deg 100% 16%) 0%,
-    hsl(340deg 100% 32%) 8%,
-    hsl(340deg 100% 32%) 92%,
-    hsl(340deg 100% 16%) 100%
-  );
+  background: linear-gradient(to left,
+      hsl(340deg 100% 16%) 0%,
+      hsl(340deg 100% 32%) 8%,
+      hsl(340deg 100% 32%) 92%,
+      hsl(340deg 100% 16%) 100%);
 }
 
 .purchase-btn-front {
@@ -409,9 +438,7 @@ h1 {
   will-change: transform;
   transform: translateY(-4px);
   transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
 @media (min-width: 768px) {
@@ -429,9 +456,7 @@ h1 {
 .purchase-btn:not([disabled]):hover .purchase-btn-front {
   transform: translateY(-6px);
   transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
 .purchase-btn:not([disabled]):active .purchase-btn-front {
@@ -442,9 +467,7 @@ h1 {
 .purchase-btn:not([disabled]):hover .purchase-btn-shadow {
   transform: translateY(4px);
   transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
 .purchase-btn:not([disabled]):active .purchase-btn-shadow {
@@ -457,9 +480,9 @@ h1 {
 }
 
 .purchase-btn:disabled {
-  opacity: 0.7; 
-  cursor: not-allowed; 
-  pointer-events: none; 
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .change-btn {
@@ -487,9 +510,7 @@ h1 {
   will-change: transform;
   transform: translateY(2px);
   transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
 .change-btn-edge {
@@ -499,13 +520,11 @@ h1 {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  background: linear-gradient(
-    to left,
-    hsl(340deg 100% 16%) 0%,
-    hsl(340deg 100% 32%) 8%,
-    hsl(340deg 100% 32%) 92%,
-    hsl(340deg 100% 16%) 100%
-  );
+  background: linear-gradient(to left,
+      hsl(340deg 100% 16%) 0%,
+      hsl(340deg 100% 32%) 8%,
+      hsl(340deg 100% 32%) 92%,
+      hsl(340deg 100% 16%) 100%);
 }
 
 .change-btn-front {
@@ -519,9 +538,7 @@ h1 {
   will-change: transform;
   transform: translateY(-4px);
   transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
 @media (min-width: 768px) {
@@ -539,9 +556,7 @@ h1 {
 .change-btn:not([disabled]):hover .change-btn-front {
   transform: translateY(-6px);
   transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
 .change-btn:not([disabled]):active .change-btn-front {
@@ -552,9 +567,7 @@ h1 {
 .change-btn:not([disabled]):hover .change-btn-shadow {
   transform: translateY(4px);
   transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
 .change-btn:not([disabled]):active .change-btn-shadow {
@@ -567,7 +580,7 @@ h1 {
 }
 
 .change-btn:disabled {
-  opacity: 0.7; 
-  cursor: not-allowed; 
-  pointer-events: none; 
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
 }

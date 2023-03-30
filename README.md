@@ -15,7 +15,7 @@ ColaCo’s sales team has tentatively set these prices but might need to adjust 
 
 **Product Name:** Pop<br/>
 **Description:** An explosion of flavor that will knock your socks off!<br/>
-**Cost:*** 1 dollar US<br/>
+**Cost:** 1 dollar US<br/>
 **Maximum Quantity available to Vend:** 100
 
 **Product Name:** Cola<br/>
@@ -30,7 +30,7 @@ ColaCo’s sales team has tentatively set these prices but might need to adjust 
 
 ## Analysis and Solution
 
-1. Started with Setting up the backend server using Node.js and a web framework like Express.js. Defined API routes for handling inventory updates, restocking, and pricing changes. Also, created API routes to check Admin Login info for Restocking.
+1. Started with setting up the backend server using Node.js and a web framework like Express.js. Defined API routes for handling inventory updates, restocking, and pricing changes. Also, created API routes to check Admin Login info for Restocking.
 2. Chose a MongoDB database to store the virtual soda inventory and Admin Access Code information. 
 3. Developed the frontend using React. Tried to create a user interface that looks and feels like a traditional vending machine.
 4. Defined state variables in the frontend to keep track of the current inventory, pricing information, the amount of money inserted by the user and the login information for restocking.
@@ -50,6 +50,7 @@ ColaCo’s sales team has tentatively set these prices but might need to adjust 
 2. Install the mongodb by using the command 'brew install mongodb-community@6.0'. 
 3. Run the 'brew services start mongodb-community@6.0' command to start the MongoDB server.
 4. Hit 'mongosh' command to find the connection string to use in the MongoDB Compass client app.
+5. Inside the MongoDB Compass app, create a Database named colaco and two schemas namely 'sodas' and 'admins'.
 
 ### Git Cloning and running the application
 
@@ -105,3 +106,21 @@ To load soda details into the Database, Open Postman App and create a POST reque
     "maxQuantity": 50,
     "currQuantity": 50
 }
+
+To load admin details into the Database, create a POST request to 'http://localhost:3001/admins' API, using the below request body JSON
+
+{
+    "_id": 1,
+    "access_code": "12345",
+    "isLoggedIn": false
+}
+
+## Directions
+
+1. By hitting 'npm start' from the webapp folder, the react app will run in the browser. You will see the Home page.
+2. As a user, In the home page of the vending machine select the soda that you want, then insert money using the buttons below. You can insert either $1, $5, $10, or $20 bills.
+3. Click on the 'Buy Soda' button to download the soda JSON file. The remaining money will get updated as well.
+4. You can either buy another soda or Exit by clicking on the 'End Transaction' button. On clicking this button, the remaining amount(if any) will be downloaded as a text file.
+5. As an admin, you can click on the Restock button on the Navbar, this will take you to the login screen, where you type in the Access Code. When success, this will take you to the Restock page. 
+6. On the Restock page, click on the soda to restock or change cost. You wont be able to restock more than the MaxQuantity and the maximum cost that you can update is set to $99.
+7. When done, click on the Logout button. This take you back to the Vending Machine Home Page.
