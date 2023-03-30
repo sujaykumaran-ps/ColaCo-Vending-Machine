@@ -25,6 +25,43 @@ handleSodaSelection = (soda) => {
     });
 };
 
+handleLogout = (event) => { 
+    event.preventDefault();
+    const admin = this.state.admins.find((admin) => admin.isLoggedIn === true);
+    if (!admin) {
+      this.setState({ error: 'Incorrect Access Code, please try again!!!' });
+    } else {
+      this.setState({ error: null });
+      fetch(`http://localhost:3001/admin/${admin.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          isLoggedIn: false
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to update admin');
+        }
+        return response.json();
+      })
+      .then(updatedAdmin => {
+        const updatedAdmins = this.state.admins.map((a) => {
+          if (a.id === updatedAdmin.id) {
+            return updatedAdmin;
+          }
+          return a;
+        });
+        this.setState({ admins: updatedAdmins });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
+  };
+
 handleQuantityUpdate = () => {
     const { selectedSoda, quantity, virtualSodas } = this.state;
     const quantityNumber = parseInt(quantity); 
@@ -66,12 +103,12 @@ handleQuantityUpdate = () => {
       });
       // update the state with the updated virtualSodas array and remainingMoney
       this.setState({
-        quanity: 0,
+        quantity: 0,
         virtualSodas: updatedVirtualSodas,
         selectedSoda: null
       });
     }
-  };
+};
 
 componentDidMount() {
     const toJson = (response) => response.json();
@@ -93,6 +130,7 @@ componentDidMount() {
         loadAdmins(config);
       });
   }
+
   
     render() {
       const {
@@ -101,7 +139,7 @@ componentDidMount() {
         admins
       } = this.state;
       if (admins.length && !admins[0].isLoggedIn) {
-        return <Navigate to="/admin" />;
+        return <Navigate to="/" />;
       }
       const defaultQuantity = selectedSoda ? selectedSoda.maxQuantity - selectedSoda.currQuantity : '';
       const defaultCost = selectedSoda ? selectedSoda.cost : '';
@@ -122,22 +160,20 @@ componentDidMount() {
               ))}
             </div>
             <div className="money-insertion">
-            <p>Update Sodas</p>
-
-            <label htmlFor="quantity">Quantity to refill</label>
-            <input type="range" id="quantity" name="quantity" min="1" max={defaultQuantity} value={this.state.quantity} onChange={this.handleQuantityChange}></input>
-            <button type="button" onClick={this.handleQuantityUpdate}>Refill Sodas</button>
-            <label htmlFor="cost">Cost</label>
-            <input type="number" id="cost" name="cost" defaultValue={defaultCost}></input> 
-          </div>
-          <div className="purchase-button">
-          <button className="change-btn" type="button" disabled={selectedSoda} onClick={this.handleRemainingMoney}>
-            <span className="change-btn-shadow"></span>
-            <span className="change-btn-edge"></span>
-            <span className="change-btn-front text">Logout</span>
-          </button>
-          </div>
-
+                <p>Update Sodas</p>
+                <label htmlFor="quantity">Quantity to refill</label>
+                <input type="range" id="quantity" name="quantity" min="0" max={defaultQuantity} value={this.state.quantity} onChange={this.handleQuantityChange}></input>
+                <button type="button" onClick={this.handleQuantityUpdate}>Refill Sodas</button>
+                <label htmlFor="cost">Cost</label>
+                <input type="number" id="cost" name="cost" defaultValue={defaultCost}></input> 
+            </div>
+            <div className="purchase-button">
+            <button className="change-btn" type="button" disabled={selectedSoda} onClick={this.handleLogout}>
+                <span className="change-btn-shadow"></span>
+                <span className="change-btn-edge"></span>
+                <span className="change-btn-front text">Logout</span>
+            </button>
+            </div>
           </div>
         </div>
       );
