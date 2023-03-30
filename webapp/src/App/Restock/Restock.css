@@ -5,7 +5,7 @@
     width: 860px;
     margin-top: 15px;
     border-radius: 15px;
-    border: solid hsl(345deg 100% 47%);
+    border: 2px solid hsla(345, 100%, 47%, 0.765);
     text-align: center;
     z-index: 1;
 }
@@ -18,7 +18,7 @@
     padding: 10px;
     margin: 0px 25px;
     width: 120px;
-    height: 40px;
+    height: 45px;
     border: none;
     border-radius: 10px;
     color: white;
@@ -34,7 +34,7 @@
 .update-div .cost-div button {
     position: relative;
     top: -4px;
-    left: 52px;
+    left: 44px;
 }
 
 .update-div .Fizz-update button {
@@ -66,12 +66,14 @@
     padding: 10px;
     position: relative;
     height: 70px;
+    margin-top: 12px;
 }
 
 .cost-div {
     padding: 10px;
     position: relative;
     height: 70px; 
+    margin-bottom: 4px;
 }
 
 .qty-div label, .cost-div label {
@@ -83,7 +85,7 @@
 }
 .cost-div label {
     position: relative;
-    left: 55px;
+    left: 62px;
 }
 
 .qty-div.Pop-update label, .cost-div.Pop-update label {
@@ -102,12 +104,61 @@
     color: rgb(0, 170, 37);
 }
 
-.cost-div input {
+
+input[type=text] {
+    border: 2px solid #ccc;
+    padding: 20px;
+    font-size: 16px; 
+    border-radius: 10px;
     margin-right: 40px;
     position: relative;
-    left: 60px;
-    width: 33%;
-    height: 30px;
+    left: 62px;
+    width: 34%;
+    height: 20px;
+    color: hsl(345deg 100% 47%);
+}
+  
+input[type=text]:focus {
+    border-color: hsl(345deg 100% 47%); 
+    outline: none;
+}
+
+.cost-div.Cola-update input[type=text] {
+    color: rgb(0, 170, 37);
+}
+
+.cost-div.Cola-update input[type=text]:focus {
+    border-color: rgba(0, 170, 37, 0.817);
+}
+
+.cost-div.Pop-update input[type=text] {
+    color: rgb(230, 103, 19);
+}
+
+.cost-div.Pop-update input[type=text]:focus {
+    border-color: rgba(230, 103, 19, 0.731);
+}
+
+
+.cost-div.MegaPop-update input[type=text] {
+    color: rgb(0, 123, 255);
+}
+
+.cost-div.MegaPop-update input[type=text]:focus {
+    border-color: rgba(0, 123, 255, 0.803);
+}
+
+
+.cost-div.Fizz-update input[type=text] {
+    color: rgb(70, 70, 70);
+}
+
+.cost-div.Fizz-update input[type=text]:focus {
+    border-color: rgba(70, 70, 70, 0.745);
+}
+
+input[type=range]:focus {
+    outline: none;
 }
 
 input[type=range] {
@@ -121,6 +172,7 @@ input[type=range] {
 input[type=range]::-webkit-slider-runnable-track {
     height: 4px;
     background: #ddd;
+    border-radius: 5px;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -148,9 +200,7 @@ input[type=range]::-webkit-slider-thumb {
     background: rgb(70, 70, 70);
 }
 
-input[type=range]:focus {
-    outline: none;
-}
+
 
 input[type=range]::-moz-range-track {
     height: 5px;
@@ -205,7 +255,6 @@ input[type=range]::-ms-thumb {
 .range-value {
     position: relative;
     display: inline-block;
-    margin-left: 10px;
     width: 40px;
     text-align: center;
     font-size: 20px;

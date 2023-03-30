@@ -218,7 +218,7 @@ componentDidMount() {
                     <label htmlFor="quantity">Quantity to refill</label>
                     <input type="range" id="quantity" name="quantity" min="0" max={defaultQuantity} value={this.state.quantity} onChange={this.handleQuantityChange}></input>
                     <span className="range-value">{this.state.quantity}</span>
-                    <button type="button" onClick={this.handleQuantityUpdate}>Refill Sodas</button>
+                    <button type="button" onClick={this.handleQuantityUpdate}>Refill Soda</button>
                 </div>
                 <div className={`cost-div ${selectedSoda?.name.split(' ').join('')}-update`}>
                     <label htmlFor="cost" >Cost</label>
