@@ -8,24 +8,24 @@ ColaCo’s sales team has tentatively set these prices but might need to adjust 
 
 ## Current Virtual Soda lineup
 
-**Product Name:** Fizz
-**Description:** An effervescent fruity experience with hints of grape and coriander.
-**Cost:** 1 dollar US
+**Product Name:** Fizz<br/>
+**Description:** An effervescent fruity experience with hints of grape and coriander.<br/>
+**Cost:** 1 dollar US<br/>
 **Maximum Quantity available to vend:** 100
 
-**Product Name:** Pop
-**Description:** An explosion of flavor that will knock your socks off!
-**Cost:*** 1 dollar US
+**Product Name:** Pop<br/>
+**Description:** An explosion of flavor that will knock your socks off!<br/>
+**Cost:*** 1 dollar US<br/>
 **Maximum Quantity available to Vend:** 100
 
-**Product Name:** Cola
-**Description:** A basic no nonsense cola that is the perfect pick me up for any occasion.
-**Cost:** 1 dollar US
+**Product Name:** Cola<br/>
+**Description:** A basic no nonsense cola that is the perfect pick me up for any occasion.<br/>
+**Cost:** 1 dollar US<br/>
 **Maximum Quantity available to vend:** 200
 
-**Product Name:** Mega Pop
-**Description:** Not for the faint of heart.  So flavorful and so invigorating, it should probably be illegal.
-**Cost:** 1 dollar US
+**Product Name:** Mega Pop<br/>
+**Description:** Not for the faint of heart.  So flavorful and so invigorating, it should probably be illegal.<br/>
+**Cost:** 1 dollar US<br/>
 **Maximum Quantity available to vend:** 50
 
 ## Analysis and Solution
@@ -60,7 +60,7 @@ ColaCo’s sales team has tentatively set these prices but might need to adjust 
 
 ### Load Data into DB
 
-To load soda details into the Database, Open Postman App and create a POST request to 'http://localhost:3001/sodas' API, using the below request body JSON,
+To load soda details into the Database, Open Postman App and create a POST request to 'http://localhost:3001/sodas' API, using the below request body JSONs
 
 #### FIZZ
 
