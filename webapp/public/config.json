@@ -1,3 +1,4 @@
 {
-    "soda_api_url":"http://localhost:3001/sodas"
+    "soda_api_url":"http://localhost:3001/sodas",
+    "admin_api_url": "http://localhost:3001/admin"
 }

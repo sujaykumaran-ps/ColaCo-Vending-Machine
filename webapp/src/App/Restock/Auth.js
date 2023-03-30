@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import './Auth.css';
 import { Restock } from './Restock';
 
@@ -8,7 +8,7 @@ export class Auth extends React.Component {
     super(props);
     this.state = {
       password: '',
-      isLoggedIn: false,
+      admins:[],
       error: ''
     };
   }
@@ -22,21 +22,59 @@ export class Auth extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.password !== '12345') {
-      this.setState({ error: 'Incorrect Access Code, please try again!!!', isLoggedIn: false  });
-    } else if (this.state.password === '12345') {
-      this.setState({ isLoggedIn: true, error: null });
-    } else{
-      this.setState({ error: 'Please enter a 5-digit Access Code!!', isLoggedIn: false  });
+    const admin = this.state.admins.find((admin) => admin.access_code === this.state.password);
+    if (!admin) {
+      this.setState({ error: 'Incorrect Access Code, please try again!!!' });
+    } else {
+      this.setState({ error: null });
+      fetch(`http://localhost:3001/admin/${admin.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          isLoggedIn: true
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to update admin');
+        }
+        return response.json();
+      })
+      .then(updatedAdmin => {
+        const updatedAdmins = this.state.admins.map((a) => {
+          if (a.id === updatedAdmin.id) {
+            return updatedAdmin;
+          }
+          return a;
+        });
+        this.setState({ admins: updatedAdmins });
+      })
+      .catch(error => {
+        console.error(error);
+      });
     }
-    
   };
 
-  render() {
-    if (this.state.isLoggedIn) {
-      return <Navigate to="/restock" />;
-    }
+  componentDidMount() {
+    const toJson = (response) => response.json();
+    const loadData = (config) => {
+      fetch(config.admin_api_url)
+        .then(toJson)
+        .then((admins) => this.setState({ admins }));
+    };
+  
+    fetch("config.json").then(toJson).then(loadData);
+  }
 
+  render() {
+    const {
+      admins
+    } = this.state;
+      if (admins.length && admins[0].isLoggedIn) {
+        return <Navigate to="/restock" />;
+      }    
     return (
       <div className="form-div">
         <form className="form-style" onSubmit={this.handleSubmit}>
@@ -53,7 +91,6 @@ export class Auth extends React.Component {
             <p className="error-message">{this.state.error}</p>
           )}
         </form>
-        {this.state.isLoggedIn && <Restock isLoggedIn={this.state.isLoggedIn} />}
       </div>
     );
   }

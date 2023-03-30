@@ -66,6 +66,7 @@ h1 {
   overflow: hidden;
   transition: transform 0.3s ease-out;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .Fizz {
@@ -92,11 +93,11 @@ h1 {
 }
 
 .soda:hover {
-  transform: translateY(-22px);
+  transform: translateY(-16px);
 }
 
 .soda.selected {
-  transform: translateY(-22px);
+  transform: translateY(-16px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -296,13 +297,23 @@ h1 {
   z-index: 1;
 }
 
+
 .money-insertion p {
   font-size: 16px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
   margin-top: 10px;
   margin-bottom: 15px;
-  color: rgb(44, 44, 44);
+  
+}
+
+.money-insertion #rem-amt {
+  color: rgb(189, 63, 63);
+  padding: 5px;
+}
+
+.money-insertion #bills-title{
+  color: #82bd60;
 }
 
 .money-insertion button {

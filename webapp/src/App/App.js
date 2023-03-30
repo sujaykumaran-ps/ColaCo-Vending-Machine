@@ -118,7 +118,6 @@ componentDidMount() {
 }
 
 
-
   render() {
     const {
       selectedSoda,
@@ -143,12 +142,15 @@ componentDidMount() {
             ))}
           </div>
           <div className="money-insertion">
-            <p>$ Insert Bills $</p>
+            <p id="bills-title">$ Insert Bills $</p>
             <button onClick={() => this.handleMoneyInsertion(1)}>$1</button>
             <button onClick={() => this.handleMoneyInsertion(5)}>$5</button>
             <button onClick={() => this.handleMoneyInsertion(10)}>$10</button>
             <button onClick={() => this.handleMoneyInsertion(20)}>$20</button>
-            <p>Remaining: ${remainingMoney}</p>
+            <div className="rem-div">
+              <p id="rem-amt">Remaining: ${remainingMoney}</p>
+            </div>
+    
           </div>
           <div className="purchase-button">
           <button className="purchase-btn" type="button" disabled={!selectedSoda || remainingMoney < selectedSoda.cost} onClick={this.handlePurchase}>
