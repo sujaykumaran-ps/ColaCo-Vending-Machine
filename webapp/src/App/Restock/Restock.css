@@ -172,6 +172,7 @@ input[type=range]:focus {
 input[type=range] {
     width: 30%;
     height: 30px;
+    appearance:inherit;
     -webkit-appearance: none;
     position: relative;
     top: 8px;
