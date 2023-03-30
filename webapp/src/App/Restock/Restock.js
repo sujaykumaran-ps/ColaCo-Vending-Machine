@@ -6,6 +6,7 @@ export class Restock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        cost: 0,
         selectedSoda: null,
         virtualSodas: [],
         admins: [],
@@ -16,7 +17,12 @@ export class Restock extends React.Component {
 handleQuantityChange = (event) => {
     const quantity = event.target.value;
     this.setState({ quantity });
-    console.log(quantity);
+};
+
+handleCostChange = (event) => {
+    const cost = event.target.value;
+    this.setState({ cost });
+    console.log(cost);
 };
 
 handleSodaSelection = (soda) => {
@@ -69,7 +75,6 @@ handleQuantityUpdate = () => {
       const updatedVirtualSodas = virtualSodas.map(soda => {
         if (soda.name === selectedSoda.name) {
           soda.currQuantity += quantityNumber ;
-          console.log(soda.currQuantity);
           // make a PUT request to update the currQuantity field in the database
           fetch(`http://localhost:3001/sodas/${soda.id}`, {
             method: 'PUT',
@@ -104,6 +109,55 @@ handleQuantityUpdate = () => {
       // update the state with the updated virtualSodas array and remainingMoney
       this.setState({
         quantity: 0,
+        cost: 0,
+        virtualSodas: updatedVirtualSodas,
+        selectedSoda: null
+      });
+    }
+};
+
+handleCostUpdate = () => {
+    const { selectedSoda, cost, virtualSodas } = this.state;
+    const costNumber = parseInt(cost); 
+    if (costNumber) {
+      const updatedVirtualSodas = virtualSodas.map(soda => {
+        if (soda.name === selectedSoda.name) {
+          soda.cost = costNumber ;
+          // make a PUT request to update the cost field in the database
+          fetch(`http://localhost:3001/sodas/${soda.id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              cost: soda.cost
+            })
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Failed to update soda quantity');
+              }
+              return response.json();
+            })
+            .then(updatedSoda => {
+              // update the virtualSodas array with the updated soda
+              return {
+                ...soda,
+                cost: updatedSoda.cost
+              };
+              
+            })
+            .catch(error => {
+              console.error(error);
+              return soda;
+            });
+        }
+        return soda;
+      });
+      // update the state with the updated virtualSodas array and remainingMoney
+      this.setState({
+        quantity: 0,
+        cost: 0,
         virtualSodas: updatedVirtualSodas,
         selectedSoda: null
       });
@@ -166,8 +220,11 @@ componentDidMount() {
                     <span className="range-value">{this.state.quantity}</span>
                     <button type="button" onClick={this.handleQuantityUpdate}>Refill Sodas</button>
                 </div>
-                <label htmlFor="cost">Cost</label>
-                <input type="number" id="cost" name="cost" defaultValue={defaultCost}></input> 
+                <div className={`cost-div ${selectedSoda?.name.split(' ').join('')}-update`}>
+                    <label htmlFor="cost" >Cost</label>
+                    <input type="text" id="cost" name="cost" value={this.state.cost} onChange={this.handleCostChange}></input> 
+                    <button type="button" onClick={this.handleCostUpdate}>Update Cost</button>
+                </div>
             </div>
             <div className="purchase-button">
             <button className="change-btn" type="button" disabled={selectedSoda} onClick={this.handleLogout}>

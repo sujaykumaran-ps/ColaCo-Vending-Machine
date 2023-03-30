@@ -11,7 +11,7 @@
 }
 
 
-.update-div button {
+.update-div .qty-div button, .update-div .cost-div button  {
     font-family: Haettenschweiler, sans-serif;
     font-size: 15px;
     font-weight: 600;
@@ -26,6 +26,15 @@
     background-color: hsl(345deg 100% 47%);
     transition: all 0.2s ease-in-out;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    top: -4px;
+    left: 10px;
+}
+
+.update-div .cost-div button {
+    position: relative;
+    top: -4px;
+    left: 52px;
 }
 
 .update-div .Fizz-update button {
@@ -46,37 +55,54 @@
     height: 70px;
 }
 
+.cost-div {
+    padding: 10px;
+    position: relative;
+    height: 70px; 
+}
+
 .qty-div label, .cost-div label {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
     font-weight: 600;
-    margin-top: 10px;
-    margin-bottom: 15px;
+    margin: 10px 20px 15px 0px;
     color: hsl(345deg 100% 47%);
 }
+.cost-div label {
+    position: relative;
+    left: 55px;
+}
 
-.qty-div.Pop-update label {
+.qty-div.Pop-update label, .cost-div.Pop-update label {
     color: rgb(230, 103, 19);
 }
 
-.qty-div.MegaPop-update label{
+.qty-div.MegaPop-update label, .cost-div.MegaPop-update label{
     color: rgb(0, 123, 255);
 }
 
-.qty-div.Fizz-update label{
+.qty-div.Fizz-update label, .cost-div.Fizz-update label{
     color: rgb(70, 70, 70);
 }
 
-.qty-div.Cola-update label{
+.qty-div.Cola-update label, .cost-div.Cola-update label{
     color: rgb(0, 170, 37);
 }
 
-
+.cost-div input {
+    margin-right: 40px;
+    position: relative;
+    left: 60px;
+    width: 33%;
+    height: 30px;
+}
 
 input[type=range] {
     width: 30%;
     height: 30px;
     -webkit-appearance: none;
+    position: relative;
+    top: 8px;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
@@ -164,11 +190,12 @@ input[type=range]::-ms-thumb {
 
 
 .range-value {
+    position: relative;
     display: inline-block;
     margin-left: 10px;
     width: 40px;
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     color: hsl(345deg 100% 47%);
 }
