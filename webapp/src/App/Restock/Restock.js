@@ -119,7 +119,8 @@ handleQuantityUpdate = () => {
 handleCostUpdate = () => {
     const { selectedSoda, cost, virtualSodas } = this.state;
     const costNumber = parseInt(cost); 
-    if (costNumber <= 0) {
+    console.log(costNumber);
+    if (isNaN(costNumber) || costNumber <= 0) {
         this.setState({ error: '*Please enter a valid cost!' });
         return;
     }
