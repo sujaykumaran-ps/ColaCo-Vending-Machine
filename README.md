@@ -122,5 +122,5 @@ To load admin details into the Database, create a POST request to 'http://localh
 3. Click on the 'Buy Soda' button to download the soda JSON file. The remaining money will get updated as well.
 4. You can either buy another soda or Exit by clicking on the 'End Transaction' button. On clicking this button, the remaining amount(if any) will be downloaded as a text file.
 5. As an admin, you can click on the Restock button on the Navbar, this will take you to the login screen, where you type in the Access Code. When success, this will take you to the Restock page. 
-6. On the Restock page, click on the soda to restock or change cost. You wont be able to restock more than the MaxQuantity and the maximum cost that you can update is set to $99.
-7. When done, click on the Logout button. This take you back to the Vending Machine Home Page.
+6. On the Restock page, click on a soda to restock or change cost. You wont be able to restock more than the MaxQuantity of that particular soda and also the maximum cost that you can update is set to $99.
+7. When done, click on the Logout button. This takes you back to the Vending Machine Home Page.
