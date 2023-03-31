@@ -10,7 +10,7 @@
     z-index: 1;
 }
 
-
+/* Update quantity and cost buttons */
 .update-div .qty-div button,
 .update-div .cost-div button {
     font-family: Haettenschweiler, sans-serif;
@@ -77,6 +77,7 @@
     margin-bottom: 4px;
 }
 
+/* Labels styling */
 .qty-div label,
 .cost-div label {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -111,7 +112,7 @@
     color: rgb(0, 170, 37);
 }
 
-
+/* Text Input Styling */
 input[type=text] {
     border: 2px solid #ccc;
     padding: 16px;
@@ -165,6 +166,7 @@ input[type=text]:focus {
     border-color: rgba(70, 70, 70, 0.745);
 }
 
+/* Range input styling */
 input[type=range]:focus {
     outline: none;
 }
@@ -294,6 +296,7 @@ input[type=range]::-ms-thumb {
     color: rgb(70, 70, 70);
 }
 
+/* error messages */
 .error-message-restock {
     position: absolute;
     width: 400px;
