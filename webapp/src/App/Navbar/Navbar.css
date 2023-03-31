@@ -9,9 +9,17 @@
     box-shadow: 0 6px 4px -6px #191919;
 }
 
+.logo-style {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    top: -16px;
+    left: -1px;
+}
 
 .title {
     position: relative;
+    top: 0px;
     padding: 17px;
     margin: auto;
     margin-left: 20px !important;
@@ -24,12 +32,12 @@
 }
 
 .app-btn {
+    position: relative;
     text-decoration: none;
     color: rgb(235, 235, 235);
     font-family: cursive;
+    top: -30px;
 }
-
-
 
 .restock-btn {
     position: absolute;

@@ -12,8 +12,10 @@ export class Navbar extends React.Component {
         // Navbar Div with Title and Restock Button
         <Router>
             <div className="navbar-style">
+                
                 <h2 className="title"> 
                     <Link to="/" className="app-btn">ColaCo</Link>
+                    <img alt="logo" className="logo-style" src="logo1.png"></img>
                     <Link to="/admin">
                     <button className="restock-btn" type="button">
                         <span className="restock-btn-shadow"></span>
